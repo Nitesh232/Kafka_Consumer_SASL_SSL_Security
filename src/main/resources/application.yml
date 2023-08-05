@@ -1,0 +1,31 @@
+server:
+  port: 9095 
+  
+app:
+  kafka:
+    consumer:
+      topic: ssl-topic
+
+
+spring:
+  kafka:
+    consumer:
+      group-id: sasl-consumer-group
+      bootstrap-servers: localhost:9092,localhost:9093
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer   
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      security:
+        protocol: SASL_SSL
+ 
+    ssl:    
+      protocol: TLSv1.2
+      trust-store-location: kafka.client.truststore.jks
+      trust-store-password: pass
+      key-store-location: kafka.client.keystore.jks
+      key-store-password: pass
+      key-password: pass123
+      
+      
+      
+      
+      
